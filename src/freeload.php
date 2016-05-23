@@ -4,6 +4,12 @@ class Freeload {
     private $dirs;
 
     public function __construct($dirs=[]) {
+        if (!is_array($dirs)) {
+            $tempdir = $dirs;
+            unset($dirs);
+            $dirs[] = $tempdir;
+        }
+
         $this->dirs = $dirs;
         if (!empty($dirs)) {
             $this->Autoload($dirs);
