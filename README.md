@@ -1,7 +1,7 @@
 # Freeload
 Freeload is a PHP Class Autoloader
 
-Freeload accepts an array of directory paths. These paths should be specified as absolute paths when available. When you create a new instance of a class, Freeload will search for the class file within the specified directories and within any subdirectory with the same (lowercase) name as the class itself. It will also look one directory deeper if it finds a src/ directory within the class name subdirectory.
+Freeload accepts an array of directory paths. These paths should be specified as absolute paths when available. When you create a new instance of a class, Freeload will search for the class file within the specified directories and within any subdirectory with the same name as the class itself. It will also look one directory deeper if it finds a src/ directory within the class name subdirectory.
 
 ## BASIC EXAMPLE
 

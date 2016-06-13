@@ -25,10 +25,11 @@ class Freeload {
            $this->dirs = array_merge($this->dirs,$dirs);
 
        spl_autoload_register(function ($classname) {
-           $classname = strtolower($classname);
            $dirs = $this->dirs;
            foreach ($dirs as $dir) {
                $dir = rtrim($dir,'/');
+
+               // Not Lowercase
                if (file_exists($dir . '/' . $classname . '.php')) {
                    require_once($dir . '/' . $classname . '.php');
                    break;
@@ -41,6 +42,22 @@ class Freeload {
                    require_once($dir . '/' . $classname . '/src/' . $classname . '.php');
                    break;
                }
+
+               // lowercase?
+               $lclassname = strtolower($classname);
+               if (file_exists($dir . '/' . $lclassname . '.php')) {
+                   require_once($dir . '/' . $lclassname . '.php');
+                   break;
+               }
+               if (file_exists($dir . '/' . $lclassname . '/' . $lclassname . '.php')) {
+                   require_once($dir . '/' . $lclassname . '/' . $lclassname . '.php');
+                   break;
+               }
+               if (file_exists($dir . '/' . $lclassname . '/src/' . $lclassname . '.php')) {
+                   require_once($dir . '/' . $lclassname . '/src/' . $lclassname . '.php');
+                   break;
+               }
+
            }
        });
     }
